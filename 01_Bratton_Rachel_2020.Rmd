@@ -1,0 +1,36 @@
+---
+title: "quakesmarkdown"
+author: "Rachel Bratton"
+date: "9/16/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+#1. Load quakes with `data(quakes)`. SHow what’s there  with str() and summary().
+`r 
+str(quakes)
+summary(quakes)`
+
+#2. Show the entirity of the column 
+
+`r quakes$long`
+
+#3. Hey, another useful function - unique()! Apply it to a vector, and you can see what are all of the unique values. It’s great for really digging into a problematic vector. 
+
+#What unique stations are there? Use `length()` with `unique()` to determine how many stations there are.
+
+`r unique(quakes$stations) #gives list of unique stations
+length(unique(quakes$stations)) #gives length of list = 102`
+
+#4. Using `range()`, what is the range of depths where quakes occur?
+
+`r range(quakes$depth) #range = 40-680`
+
+# E.C. Where was the earthquake of largest magnitude found? You’ll need to use come comparisons and the `max()` function for this in your indices instead of a number!
+
+`r max(quakes$mag)` #max=6.4 mag 
+`quakes[order(quakes$mag, decreasing=TRUE), c(1,2,3,4)]` #lat=-15.56, long=167.62, depth=127, mag=6.4
